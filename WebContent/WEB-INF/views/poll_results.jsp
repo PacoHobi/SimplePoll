@@ -17,33 +17,44 @@ totalVotes = totalVotes == 0 ? 1 : totalVotes;
 <!DOCTYPE html>
 <html>
 <head>
-<title>SimplePoll</title>
+	<title>SimplePoll</title>
+	<link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700|Roboto+Slab:400,300,100" rel="stylesheet" type="text/css">
+	<link href="../css/main.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-
-	<h2><%= poll.getQuestion() %></h2>
 	
-	<table>
-		<tr>
-			<th>Option</th>
-			<th>Votes</th>
-			<th>Percentage</th>
-		</tr>
-		
+<div id="wrapper">
+
+	<div id="logo">
+		Simple<span class="alter">Poll</span>
+	</div>
+
+	<div id="question"><%= poll.getQuestion() %></div>
+
+	<div id="poll_results">
+	
 		<%
 			for (PollOption option : poll.getOptions()) {
+				int percentage = (int) (100 * option.getVotes() / totalVotes);
 		%>
-		
-			<tr>
-				<td><%= option.getText() %></td>
-				<td><%= option.getVotes() %></td>
-				<td><%= 100 * option.getVotes() / totalVotes %>%</td>
-			</tr>
-			
+			<div class="option">
+				<span class="text"><%= option.getText() %></span>
+				<span class="progressbar">
+					<span style="width: <%= percentage %>%"></span>
+				</span>
+				<span class="numbers"><%= option.getVotes() %> votes (<%= percentage %>%)</span>
+			</div>
 		<%
 			}
 		%>
-	
-	</table>
+		
+	</div>
+
+	<div id="footer">
+		Created by <a href="http://www.pacohobi.com" target="_blank">Paco Hobi</a>
+	</div>
+
+</div>
+		
 </body>
 </html>
