@@ -7,12 +7,14 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Entity implementation class for Entity: Poll
  *
  */
 @Entity
+@XmlRootElement
 @NamedQuery( name="Poll.findById", query = "SELECT p FROM Poll p WHERE p.id = :id" )
 public class Poll implements Serializable {
 

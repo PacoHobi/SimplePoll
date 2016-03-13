@@ -29,18 +29,17 @@ public class PollService {
 	public void addPoll(Poll p) {
 		em.persist(p);
 	}
-	
+
 	public Poll findPollById(String pollId) {
 		TypedQuery<Poll> pQuery = em.createNamedQuery("Poll.findById", Poll.class);
 		pQuery.setParameter("id", Integer.parseInt(pollId));
+		
 		Poll poll = null;
 		try {
 			poll = pQuery.getSingleResult();
 		} catch (NoResultException e) {
-			
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
+		
 		return poll;
 	}
 

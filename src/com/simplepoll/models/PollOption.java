@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * Entity implementation class for Entity: PollOption
@@ -18,6 +20,7 @@ import javax.persistence.Transient;
  */
 @Entity
 @Table(name = "POLL_OPTION")
+@XmlRootElement
 @NamedQuery(name = "PollOption.addVoteById", query = "UPDATE PollOption p SET p.votes = p.votes + 1 WHERE p.id = :id")
 public class PollOption implements Serializable {
 
@@ -34,6 +37,7 @@ public class PollOption implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "POLL_FK")
+	@XmlTransient
 	private Poll poll;
 
 	public PollOption() {
@@ -70,6 +74,7 @@ public class PollOption implements Serializable {
 		this.votes = votes;
 	}
 
+	@XmlTransient
 	public Poll getPoll() {
 		return poll;
 	}
