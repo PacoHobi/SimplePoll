@@ -1,5 +1,5 @@
 # SimplePoll
-A J2EE web application for creating online polls.
+A JEE web application for creating online polls.
 
 ## API
 All data is sent and received in JSON.
